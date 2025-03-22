@@ -1,0 +1,23 @@
+{
+    "name": "cpf_validator",
+    "version": "1.0.0",
+    "main": "main.js",
+    "license": "MIT",
+    "scripts": {
+        "start": "electron .",
+        "build": "electron-builder"
+    },
+    "devDependencies": {
+        "electron": "^35.0.3",
+        "electron-builder": "^25.1.8"
+    },
+    "dependencies": {
+        "tailwind": "^4.0.0"
+    },
+    "build": {
+        "appId": "cpf.validator.id",
+        "mac": {
+            "category": "cpf.validator.app.category.type"
+        }
+    }
+}
