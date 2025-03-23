@@ -1,40 +1,40 @@
 const root = document.getElementById("root")
+const cpfGeneratorWrapper = document.getElementById("cpf_generator")
+const passGeneratorWrapper = document.getElementById("pass_generator")
 const cpfTab = document.getElementById("cpf-tab")
 const passTab = document.getElementById("pass-tab")
 
 const classCrrTab = "cursor-pointer text-white flex-1 text-center bg-gray-600 border-b-2 border-white"
 const classTab = "cursor-pointer text-white flex-1 text-center"
 
-const routes = {
-    "cpf-tab": "./cpf_generator.html",
-    "pass-tab": "./pass_generator.html",
-}
+const tabs = [
+    {"cpf-tab": {tab: cpfTab, wrapper: cpfGeneratorWrapper}, name: "cpf-tab"},
+    {"pass-tab": {tab: passTab, wrapper: passGeneratorWrapper}, name: "pass-tab"},
+]
 
-const tabs = [cpfTab, passTab]
-
-function loadClasses(arr) {
-    for (const tab of arr) {
-        tab.className = classTab
+function loadClasses() {
+    for (const item of tabs) {
+        item[item.name].tab.className = classTab
+        item[item.name].wrapper.classList.add("hidden")
     }
 }
 
-for (const tab of tabs) {
-    tab.className = classTab
-    tab.addEventListener("click", () => {
-        loadClasses(tabs)
-        tab.className = classCrrTab
-        loadContent(routes[tab.id])
-    })
-}
-
-async function loadContent(url) {
-    const response = await fetch(url)
-    if (response.ok) root.innerHTML = await response.text()
+function loadContent(tab) {
+    loadClasses()
+    for (const item of tabs) {
+        if (item.name == tab) {
+            item[item.name].tab.className = classCrrTab
+            item[item.name].wrapper.classList.remove("hidden")
+        }
+    }
 }
 
 window.addEventListener("load", () => {
-    loadContent(routes["cpf-tab"])
-    cpfTab.className = classCrrTab
+    loadContent("cpf-tab")
 })
 
-cpfTab.addEventListener("click", () => loadContent(routes["cpf-tab"]))
+for (const item of tabs) {
+    item[item.name].tab.addEventListener("click", () => {
+        loadContent(item[item.name].tab.id)
+    })
+}

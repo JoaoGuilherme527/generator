@@ -15,9 +15,9 @@
         "tailwind": "^4.0.0"
     },
     "build": {
-        "appId": "cpf.validator.id",
+        "appId": "generator.id",
         "mac": {
-            "category": "cpf.validator.app.category.type"
+            "category": "generator.app.category.type"
         }
     }
 }
