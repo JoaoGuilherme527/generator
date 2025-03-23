@@ -4,10 +4,10 @@ const ipc = ipcMain
 
 function createWindow() {
     const mainWindow = new BrowserWindow({
-        width: 800,
+        width: 850,
         height: 600,
-        minHeight: 420,
-        minWidth: 720,
+        minWidth: 850,
+        minHeight: 550,
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,

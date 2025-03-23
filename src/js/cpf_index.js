@@ -2,6 +2,9 @@ const cpfToValid = document.getElementById("cpfToValid")
 const btnValidate = document.getElementById("btnValidate")
 const cpfGenerated = document.getElementById("cpfGenerated")
 const btnGenerate = document.getElementById("btnGenerate")
+const copyCpf = document.getElementById("copyCpf")
+const copyCpfIcon = document.getElementById("copyCpfIcon")
+const copyCpfIconCheck = document.getElementById("copyCpfIconCheck")
 
 function generateCpf(cpf) {
     digits = ""
@@ -95,14 +98,19 @@ cpfToValid.addEventListener("input", (e) => {
     e.target.value = value
 })
 
-cpfGenerated.addEventListener("click", () => {
+copyCpf.addEventListener("click", () => {
     let value = cpfGenerated.value
 
     if (value !== "") {
         navigator.clipboard
             .writeText(value)
             .then(() => {
-                alert("CPF copiado para a área de transferência!")
+                copyCpfIcon.classList.toggle("hidden")
+                copyCpfIconCheck.classList.toggle("hidden")
+                setTimeout(() => {
+                    copyCpfIcon.classList.toggle("hidden")
+                    copyCpfIconCheck.classList.toggle("hidden")
+                }, 500)
             })
             .catch((err) => {
                 console.error("Erro ao copiar:", err)
