@@ -8,6 +8,10 @@ function createWindow() {
         height: 600,
         minWidth: 850,
         minHeight: 550,
+        roundedCorners: true,
+        frame: false,
+        transparent: true,
+        backgroundColor: "#00FFFFFF",
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,
@@ -31,6 +35,11 @@ function createWindow() {
         if (isMaximized) mainWindow.restore()
         else mainWindow.maximize()
         mainWindow.webContents.send("isMaximized", isMaximized)
+    })
+
+    ipc.on("devTools", (e, message)=>{
+        console.log(e.sender.ipc);
+        mainWindow.webContents.toggleDevTools()
     })
 }
 

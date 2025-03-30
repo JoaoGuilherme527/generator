@@ -29,6 +29,11 @@ maximizeBtn.addEventListener("click", () => {
     ipc.send("maximizeApp")
 })
 
+document.addEventListener("keypress", (e)=>{
+    console.log(e.key);
+    // ipc.send("devTools", e)
+})
+
 ipc.on("isMaximized", (event, isMaximized) => {
     changeMaximizeBtnIcon(isMaximized)
 })
