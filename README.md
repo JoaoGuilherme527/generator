@@ -8,6 +8,14 @@
 
 ---
 
+## 🖼️ Preview
+
+![Tela principal do Generator](./assets/screenshot1.png)
+![Geração de senha com opções](./assets/screenshot2.png)
+
+
+---
+
 ## 📋 Prerequisites
 
 Before using **Generator**, make sure you have installed:
